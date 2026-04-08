@@ -12,7 +12,7 @@ Built with Jetpack Compose and the Leaflet.js engine, this project features a hi
 
 ## Architecture Breakdown
 ---
-* **Hybrid Interop:**  Utilizes a custom WebView bridge to communicate between Kotlin (logic/UI) and JavaScript (Leaflet map engine).
+* **Hybrid Interop:** Utilizes a custom WebView bridge to communicate between Kotlin (logic/UI) and JavaScript (Leaflet map engine).
 * **Asset Loading:** Leverages WebViewAssetLoader to securely serve local HTML/JS assets via a virtual https domain, bypassing modern Android security restrictions.
 * **Reactive UI:** The interface is built with Jetpack Compose, featuring a layered Box layout that treats the interactive map as a living background.
 * **Bidirectional Communication:** Uses evaluateJavascript to pass coordinate data from native text fields directly into the Leaflet map object in real-time.
