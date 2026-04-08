@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #map {
+            height: 100%;
+            width: 100%;
+            background-color: #f0f4f8; /* Light blue-white background */
+        }
+
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    var map;
+    var marker;
+
+    function initMap() {
+        try {
+            map = L.map('map', {
+                zoomControl: false // Optional: cleaner look
+            }).setView([52.2297, 21.0122], 13);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+            marker = L.marker([52.2297, 21.0122]).addTo(map);
+
+            setTimeout(function(){ map.invalidateSize(); }, 100);
+            setTimeout(function(){ map.invalidateSize(); }, 500);
+        } catch (e) {
+            console.error("JS Error: " + e.message);
+        }
+    }
+
+    initMap();
+
+    function updateMap(lat, lng) {
+        if(map) {
+            map.setView([lat, lng], 13);
+            marker.setLatLng([lat, lng]);
+        }
+    }
+</script>
+</body>
+</html>
